@@ -1,0 +1,30 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+
+      - name: Build and test all blog projects
+        run: |
+          set -euo pipefail
+          for pom in */pom.xml; do
+            dir="$(dirname "$pom")"
+            if [[ "$dir" == "_template" ]]; then
+              continue
+            fi
+            echo "::group::$dir"
+            (cd "$dir" && mvn -B -ntp verify)
+            echo "::endgroup::"
+          done
