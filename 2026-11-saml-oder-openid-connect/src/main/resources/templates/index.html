@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SAML vs. OpenID Connect</title>
+    <link rel="stylesheet" th:href="@{/css/demo.css}">
+</head>
+<body>
+<main>
+    <h1>SAML vs. OpenID Connect</h1>
+    <p class="badge">Aktives Protokoll: <strong th:text="${protocol}">OpenID Connect</strong></p>
+
+    <p>
+        Diese Anwendung ist identisch – egal ob sie mit SAML 2.0 oder mit
+        OpenID Connect gestartet wird. Nur die Security-Konfiguration wechselt.
+    </p>
+
+    <p th:unless="${authenticated}">
+        <a class="button" th:href="@{/me}">Anmelden und Identität anzeigen</a>
+    </p>
+    <p th:if="${authenticated}">
+        <a class="button" th:href="@{/me}">Identität anzeigen</a>
+    </p>
+
+    <h2>Nützliche Endpunkte</h2>
+    <ul>
+        <li><code>/me</code> – geschützte Seite mit allen Claims/Attributen</li>
+        <li><code>/api/me</code> – dasselbe als JSON</li>
+        <li><a th:href="@{/dozierende}"><code>/dozierende</code></a> – nur für die Gruppe <code>dozierende</code></li>
+        <li><code>/saml2/metadata/keycloak</code> – SP-Metadaten (nur im Profil <code>saml</code>)</li>
+    </ul>
+</main>
+</body>
+</html>

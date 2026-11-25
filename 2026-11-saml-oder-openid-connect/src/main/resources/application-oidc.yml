@@ -1,0 +1,22 @@
+# Login with OpenID Connect (authorization code flow)
+app:
+  sso:
+    protocol: oidc
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: saml-vs-oidc
+            # Demo value. Real projects set the environment variable.
+            client-secret: ${KEYCLOAK_CLIENT_SECRET:demo-secret-change-me}
+            # "openid" is mandatory: without it there is no ID token.
+            scope: openid,profile,email
+        provider:
+          keycloak:
+            # Discovery: endpoints and keys are read from
+            # http://localhost:8080/realms/demo/.well-known/openid-configuration
+            issuer-uri: http://localhost:8080/realms/demo
+            user-name-attribute: preferred_username

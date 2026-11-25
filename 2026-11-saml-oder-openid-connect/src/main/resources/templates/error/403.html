@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>403 – nicht berechtigt</title>
+    <link rel="stylesheet" th:href="@{/css/demo.css}">
+</head>
+<body>
+<main>
+    <h1>403 – angemeldet, aber nicht berechtigt</h1>
+    <p>
+        Die Anmeldung war erfolgreich, für diese Seite fehlt jedoch die Rolle:
+        authentifiziert, aber nicht autorisiert.
+    </p>
+    <p><a th:href="@{/me}">Meine Identität</a> · <a th:href="@{/}">Zur Startseite</a></p>
+</main>
+</body>
+</html>

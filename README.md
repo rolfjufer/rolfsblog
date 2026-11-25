@@ -11,6 +11,7 @@ Projekt samt Tests und einem README, das auf den Beitrag verweist.
 | Verzeichnis | Beitrag | Technik |
 | --- | --- | --- |
 | [`2026-11-oop-kein-selbstzweck`](2026-11-oop-kein-selbstzweck/) | Objektorientierte Programmierung ist kein Selbstzweck – [Teil 1](https://rolfsblog.ch/objektorientierte-programmierung-ist-kein-selbstzweck-1-2/), [Teil 2](https://rolfsblog.ch/objektorientierte-programmierung-ist-kein-selbstzweck-2-2/) | Java 25, Maven, JUnit |
+| [`2026-11-saml-oder-openid-connect`](2026-11-saml-oder-openid-connect/) | [SAML oder OpenID Connect?](https://rolfsblog.ch/saml-oder-openid-connect/) | Java 25, Spring Boot 4, Spring Security 7, Keycloak, Maven |
 <!-- POSTS:END -->
 
 ## Aufbau

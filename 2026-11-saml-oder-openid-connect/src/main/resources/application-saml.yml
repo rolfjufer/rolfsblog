@@ -1,0 +1,29 @@
+# Login with SAML 2.0 (started by the application)
+app:
+  sso:
+    protocol: saml
+
+spring:
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          keycloak:
+            # Must equal the client ID in Keycloak:
+            # http://localhost:8081/saml2/service-provider-metadata/keycloak
+            entity-id: "{baseUrl}/saml2/service-provider-metadata/{registrationId}"
+            # Keycloak's metadata demand signed requests; without a key the
+            # application does not start. ./generate-keys.sh creates both files.
+            signing:
+              credentials:
+                - private-key-location: file:keys/sp-private.key
+                  certificate-location: file:keys/sp-certificate.crt
+            # Without its own logout endpoint the application answers
+            # Keycloak's LogoutResponse with 401.
+            singlelogout:
+              url: "{baseUrl}/logout/saml2/slo"
+              response-url: "{baseUrl}/logout/saml2/slo"
+              binding: POST
+            assertingparty:
+              # The "discovery" of SAML: entity ID, endpoints and certificates of Keycloak
+              metadata-uri: http://localhost:8080/realms/demo/protocol/saml/descriptor

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meine Identität</title>
+    <link rel="stylesheet" th:href="@{/css/demo.css}">
+</head>
+<body>
+<main>
+    <h1>Angemeldet als <span th:text="${identity.name}">jane</span></h1>
+    <p class="badge">Nachweis per <strong th:text="${identity.protocol}">OpenID Connect</strong></p>
+
+    <h2>Claims / Attribute</h2>
+    <table>
+        <thead>
+        <tr><th>Name</th><th>Wert</th></tr>
+        </thead>
+        <tbody>
+        <tr th:each="entry : ${identity.attributes}">
+            <td><code th:text="${entry.key}">iss</code></td>
+            <td th:text="${entry.value}">http://localhost:8080/realms/demo</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>Berechtigungen</h2>
+    <ul>
+        <li th:each="authority : ${identity.authorities}"><code th:text="${authority}">OIDC_USER</code></li>
+    </ul>
+
+    <!-- POST mit CSRF-Token: Thymeleaf fügt das Token automatisch ein -->
+    <form th:action="@{/logout}" method="post">
+        <button class="button" type="submit">Abmelden (auch beim IdP)</button>
+    </form>
+    <p><a th:href="@{/}">Zur Startseite</a></p>
+</main>
+</body>
+</html>

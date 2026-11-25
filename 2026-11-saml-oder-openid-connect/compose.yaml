@@ -1,0 +1,20 @@
+# Keycloak for the demo, in development mode, with the realm from ./keycloak/import.
+# ./generate-keys.sh must run first: it writes SAML_SP_CERTIFICATE to .env.
+#
+#   docker compose up -d
+#   Admin console: http://localhost:8080/admin   (admin / admin)
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.8.1
+    container_name: saml-vs-oidc-keycloak
+    command: ["start-dev", "--import-realm"]
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      # Replaces the placeholder in realm-demo.json during the import.
+      SAML_SP_CERTIFICATE: ${SAML_SP_CERTIFICATE:?run ./generate-keys.sh first}
+    ports:
+      # Only reachable from this computer.
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./keycloak/import:/opt/keycloak/data/import:ro

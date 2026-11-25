@@ -1,0 +1,17 @@
+# The profile selects the protocol ("oidc" if none is given):
+#
+#   mvn spring-boot:run -Dspring-boot.run.profiles=oidc
+#   mvn spring-boot:run -Dspring-boot.run.profiles=saml
+spring:
+  application:
+    name: saml-oder-openid-connect
+  profiles:
+    default: oidc
+
+server:
+  port: 8081
+
+logging:
+  level:
+    # DEBUG shows every step of the security filters.
+    org.springframework.security: INFO

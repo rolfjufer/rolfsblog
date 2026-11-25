@@ -1,0 +1,5 @@
+# Replaces the default profile "oidc", so that no test calls Keycloak's issuer-uri or
+# metadata-uri. The test configurations provide the registrations instead.
+spring:
+  thymeleaf:
+    cache: false

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bereich für Dozierende</title>
+    <link rel="stylesheet" th:href="@{/css/demo.css}">
+</head>
+<body>
+<main>
+    <h1>Bereich für Dozierende</h1>
+    <p class="badge">Nachweis per <strong th:text="${identity.protocol}">OpenID Connect</strong></p>
+    <p>
+        <strong th:text="${identity.name}">jane</strong> hat die Rolle <code>ROLE_DOZIERENDE</code>.
+        Die Zugriffsregel ist für beide Protokolle dieselbe.
+    </p>
+    <p><a th:href="@{/me}">Meine Identität</a> · <a th:href="@{/}">Zur Startseite</a></p>
+</main>
+</body>
+</html>
