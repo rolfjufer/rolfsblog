@@ -5,7 +5,7 @@
 #   Admin console: http://localhost:8080/admin   (admin / admin)
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:26.8.1
+    image: quay.io/keycloak/keycloak:26.8.2
     container_name: saml-vs-oidc-keycloak
     command: ["start-dev", "--import-realm"]
     environment:

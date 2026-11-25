@@ -18,7 +18,7 @@ Zugriffsregeln sind identisch, nur die Security-Konfiguration wechselt.
 - Maven 3.9 oder neuer
 - Docker mit Compose v2 und `openssl`, um die Anwendung mit Keycloak zu starten
 
-Verwendet werden Spring Boot 4.1.3, Spring Security 7.1.3 und Keycloak 26.8.1. OpenSAML 5 lädt Maven aus
+Verwendet werden Spring Boot 4.2.0, Spring Security 7.2.0 und Keycloak 26.8.2. OpenSAML 5 lädt Maven aus
 dem Repository des Shibboleth-Projekts, weil es nicht auf Maven Central liegt.
 
 ## Bauen und testen
